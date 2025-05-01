@@ -8,6 +8,3 @@ DROP INDEX IF EXISTS db_rest.ind_dish_order_dish;
 DROP INDEX IF EXISTS db_rest.ind_dish_prod_prod;
 DROP INDEX IF EXISTS db_rest.ind_dish_prod_dish;
 
---SELECT indexname, indexdef 
---FROM pg_indexes 
---WHERE tablename = 'dishes_order';

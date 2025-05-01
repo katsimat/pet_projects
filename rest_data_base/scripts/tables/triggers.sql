@@ -72,8 +72,3 @@ UPDATE db_rest.products
 SET price = 1000.00
 WHERE id_products = 1;
 
--- explain analyze select * from db_rest.history_products;
--- select * from db_rest.dishes_restaurant;
--- select * from db_rest.dishes;
-
-
