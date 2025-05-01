@@ -1,0 +1,101 @@
+id_dishes,name,cuisine,price
+1,Cobb Salad,American,1194.52
+2,Reuben Sandwich,American,1497.51
+3,Fried Green Tomatoes,American,681.99
+4,Chicago Hot Dog,American,1506.58
+5,Clam Chowder,American,1740.64
+6,Key Lime Pie,American,1782.75
+7,Buffalo Wings,American,2729.62
+8,Cajun Shrimp,American,2181.97
+9,Lobster Roll,American,2869.77
+10,Jambalaya,American,1637.74
+11,Pancakes,American,1907.33
+12,Cornbread,American,1736.51
+13,New York Cheesecake,American,1901.76
+14,Philly Cheesesteak,American,409.95
+15,Mac and Cheese,American,3357.2
+16,Bibimbap,Korean,1930.68
+17,Haemul Pajeon,Korean,1227.95
+18,Naengmyeon,Korean,3666.94
+19,Kimchi Jjigae,Korean,2419.9
+20,Yukgaejang,Korean,2040.83
+21,Gimbap,Korean,605.71
+22,Dakgangjeong,Korean,2678.85
+23,Jjajangmyeon,Korean,1796.17
+24,Bingsu,Korean,2892.51
+25,Budae Jjigae,Korean,1905.14
+26,Patbingsu,Korean,1940.73
+27,Japchae,Korean,1406.3
+28,Galbi,Korean,1856.46
+29,Kimchi Fried Rice,Korean,1842.19
+30,Sundubu Jjigae,Korean,1248.18
+31,Tteokbokki,Korean,495.41
+32,Samgyeopsal,Korean,1390.76
+33,Bulgogi,Korean,2126.38
+34,Eomuk Tang,Korean,966.27
+35,Hobakjuk,Korean,1219.14
+36,Pirozhki,Russian,1389.98
+37,Blini with Caviar,Russian,1240.37
+38,Golubtsy,Russian,818.06
+39,Kvas,Russian,1951.23
+40,Olivier Salad,Russian,1176.4
+41,Shchi,Russian,1166.59
+42,Seledka Pod Shuboy,Russian,358.58
+43,Vareniki,Russian,1649.22
+44,Kulebyaka,Russian,2615.18
+45,Okroshka,Russian,2410.93
+46,Rassolnik,Russian,1107.65
+47,Kholodets,Russian,1777.0
+48,Zakuski Platter,Russian,3451.83
+49,Okonomiyaki,Japanese,3483.14
+50,Unagi Don,Japanese,1060.62
+51,Sashimi,Japanese,1008.87
+52,Oden,Japanese,526.06
+53,Agedashi Tofu,Japanese,685.81
+54,Gyudon,Japanese,1013.86
+55,Udon,Japanese,1971.82
+56,Miso Soup,Japanese,1676.56
+57,Kaiseki,Japanese,1985.86
+58,Onigiri,Japanese,1011.33
+59,Takoyaki,Japanese,609.64
+60,Donburi,Japanese,2649.08
+61,Tonkatsu,Japanese,437.06
+62,Ramen,Japanese,1089.91
+63,Yakitori,Japanese,1581.94
+64,Mochi,Japanese,1741.96
+65,Tempura,Japanese,1918.97
+66,Matcha Ice Cream,Japanese,1656.77
+67,Sushi,Japanese,1488.53
+68,Vindaloo,Indian,1384.05
+69,Gulab Jamun,Indian,2059.37
+70,Naan,Indian,1749.99
+71,Jalebi,Indian,2444.75
+72,Dosa,Indian,657.43
+73,Raita,Indian,540.51
+74,Samosa,Indian,1582.34
+75,Dal Tadka,Indian,1302.77
+76,Korma,Indian,352.5
+77,Palak Paneer,Indian,447.38
+78,Biryani,Indian,377.96
+79,Pani Puri,Indian,489.27
+80,Tandoori Chicken,Indian,1869.65
+81,Pav Bhaji,Indian,1337.39
+82,Malai Kofta,Indian,348.67
+83,Aloo Gobi,Indian,777.23
+84,Rogan Josh,Indian,1080.78
+85,Idli,Indian,1897.64
+86,Chana Masala,Indian,1071.06
+87,Butter Chicken,Indian,1290.92
+88,Guacamole,Mexican,1404.58
+89,Birria,Mexican,1309.48
+90,Horchata,Mexican,1919.62
+91,Agua Fresca,Mexican,2420.21
+92,Tostadas,Mexican,2461.85
+93,Tacos al Pastor,Mexican,1319.58
+94,Mole Poblano,Mexican,894.08
+95,Tamales,Mexican,141.05
+96,Sopes,Mexican,1265.6
+97,Churros,Mexican,2699.99
+98,Ceviche,Mexican,1731.52
+99,Carnitas,Mexican,1140.01
+100,Menudo,Mexican,2069.73
