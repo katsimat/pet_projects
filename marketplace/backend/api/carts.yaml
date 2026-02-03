@@ -1,0 +1,170 @@
+openapi: 3.0.0
+info:
+  title: Carts API
+  version: 1.0.0
+  description: API для работы с корзинами
+
+paths:
+  /cart:
+    get:
+      operationId: getCart
+      summary: Получение текущей корзины пользователя
+      responses:
+        "200":
+          description: Корзина пользователя
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GetCartResponse200"
+        "401":
+          description: Не авторизован
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GetCartResponse401"
+        "404":
+          description: Корзина не найдена
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GetCartResponse404"
+        "409":
+          description: Корзина залочена
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GetCartResponse409"
+
+  /cart_items:
+    post:
+      operationId: upsertCartItem
+      summary: Добавление/обновление позиции в корзине
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UpsertCartItemRequest"
+      responses:
+        "204":
+          description: Позиция сохранена
+        "401":
+          description: Не авторизован
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UpsertCartItemResponse401"
+        "400":
+          description: Ошибка валидации
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UpsertCartItemResponse400"
+        "404":
+          description: Корзина или оффер не найдены
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UpsertCartItemResponse404"
+        "409":
+          description: Корзина залочена
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UpsertCartItemResponse409"
+
+components:
+  schemas:
+    OfferUidCart:
+      type: string
+      pattern: "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
+
+    UpsertCartItemResponse400:
+      type: object
+      required:
+        - error
+      properties:
+        error:
+          type: string
+
+    UpsertCartItemResponse404:
+      type: object
+      required:
+        - error
+      properties:
+        error:
+          type: string
+
+    UpsertCartItemResponse409:
+      type: object
+      required:
+        - error
+      properties:
+        error:
+          type: string
+
+    UpsertCartItemResponse401:
+      type: object
+      required:
+        - error
+      properties:
+        error:
+          type: string
+
+    CartItem:
+      type: object
+      required:
+        - offer_uid
+        - quantity
+      properties:
+        offer_uid:
+          $ref: "#/components/schemas/OfferUidCart"
+        quantity:
+          type: integer
+          minimum: 1
+
+    GetCartResponse200:
+      type: object
+      required:
+        - items
+      properties:
+        items:
+          type: array
+          items:
+            $ref: "#/components/schemas/CartItem"
+
+    GetCartResponse401:
+      type: object
+      required:
+        - error
+      properties:
+        error:
+          type: string
+
+    GetCartResponse404:
+      type: object
+      required:
+        - error
+      properties:
+        error:
+          type: string
+
+    GetCartResponse409:
+      type: object
+      required:
+        - error
+      properties:
+        error:
+          type: string
+
+    UpsertCartItemRequest:
+      type: object
+      required:
+        - offer_uid
+        - quantity
+      properties:
+        offer_uid:
+          $ref: "#/components/schemas/OfferUidCart"
+        quantity:
+          type: integer
+          minimum: 0

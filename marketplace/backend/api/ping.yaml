@@ -1,0 +1,48 @@
+openapi: 3.0.0
+info:
+    title: Marketplace API
+    version: 1.0.0
+    description: API для маркетплейса
+
+paths:
+    /ping:
+        get:
+            operationId: ping
+            summary: Проверка работоспособности сервера
+            responses:
+                "200":
+                    description: Успешный ответ
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/PingResponse200"
+                "400":
+                    description: Ошибка запроса
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/PingResponse400"
+
+components:
+    schemas:
+        PingRequest:
+            type: object
+            properties: {}
+
+        PingResponse200:
+            type: object
+            required:
+                - status
+            properties:
+                status:
+                    type: string
+                    example: "ok"
+
+        PingResponse400:
+            type: object
+            required:
+                - error
+            properties:
+                error:
+                    type: string
+                    example: "invalid request"

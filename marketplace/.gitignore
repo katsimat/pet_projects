@@ -1,0 +1,69 @@
+# Binaries for programs and plugins
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+
+# Test binary, built with `go test -c`
+*.test
+
+# Output of the go coverage tool, specifically used by Air
+*.out
+
+# Dependency directories
+vendor/
+
+# Go workspace file
+go.work
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Build artifacts
+/bin/
+/dist/
+/build/
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Logs
+*.log
+
+# Temporary files
+tmp/
+temp/
+
+# Config files with secrets (but allow .example files)
+**/creds.json
+**/*creds.json
+!**/*.example
+backend/configs/logging.json
+backend/configs/database.json
+
+# Generated code
+backend/generated/
+
+# Educational copy of the frontend (for explanations / comments)
+/frontent_edu/
+
+# Frontend build artifacts (original + educational copy)
+/frontent/node_modules/
+/frontent/dist/
+/frontent/tsconfig.tsbuildinfo
+/frontent_edu/node_modules/
+/frontent_edu/dist/
+/frontent_edu/tsconfig.tsbuildinfo
+
+.venv

@@ -1,0 +1,114 @@
+openapi: 3.0.0
+info:
+  title: Orders API
+  version: 1.0.0
+  description: API для работы с заказами
+
+paths:
+  /orders:
+    post:
+      operationId: createOrder
+      summary: Создание заказа (пользователь берется из Authorization)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateOrderRequest"
+      responses:
+        "201":
+          description: Заказ создан
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CreateOrderResponse201"
+        "401":
+          description: Не авторизован
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CreateOrderResponse401"
+        "400":
+          description: Ошибка валидации
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CreateOrderResponse400"
+        "404":
+          description: Корзина не найдена
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CreateOrderResponse404"
+        "409":
+          description: Корзина залочена
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CreateOrderResponse409"
+
+components:
+  schemas:
+    OrderUid:
+      type: string
+      pattern: "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
+
+    OrderEmail:
+      type: string
+      pattern: "^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$"
+
+    OrderStatus:
+      type: string
+      enum:
+        - pending
+        - confirmed
+        - delivering
+        - completed
+        - cancelled
+
+    CreateOrderRequest:
+      type: object
+      properties: {}
+
+    CreateOrderResponse201:
+      type: object
+      required:
+        - uid
+        - status
+      properties:
+        uid:
+          $ref: "#/components/schemas/OrderUid"
+        status:
+          $ref: "#/components/schemas/OrderStatus"
+
+    CreateOrderResponse400:
+      type: object
+      required:
+        - error
+      properties:
+        error:
+          type: string
+
+    CreateOrderResponse404:
+      type: object
+      required:
+        - error
+      properties:
+        error:
+          type: string
+
+    CreateOrderResponse409:
+      type: object
+      required:
+        - error
+      properties:
+        error:
+          type: string
+
+    CreateOrderResponse401:
+      type: object
+      required:
+        - error
+      properties:
+        error:
+          type: string

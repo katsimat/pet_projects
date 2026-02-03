@@ -1,0 +1,170 @@
+openapi: 3.0.0
+info:
+  title: Offers API
+  version: 1.0.0
+  description: API для работы с офферами
+
+paths:
+  /offers:
+    get:
+      operationId: listOffers
+      summary: Получение списка офферов (только active) с текстовым поиском
+      parameters:
+        - $ref: "#/components/parameters/OfferTextSearchQueryParam"
+      responses:
+        "200":
+          description: Список офферов
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ListOffersResponse200"
+        "400":
+          description: Ошибка валидации
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ListOffersResponse400"
+
+  /offers/get:
+    get:
+      operationId: getOffer
+      summary: Получение одного оффера по uid
+      parameters:
+        - $ref: "#/components/parameters/OfferUidQueryParam"
+      responses:
+        "200":
+          description: Оффер найден
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GetOfferResponse200"
+        "400":
+          description: Ошибка валидации
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GetOfferResponse400"
+        "404":
+          description: Оффер не найден
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GetOfferResponse404"
+
+components:
+  parameters:
+    OfferUidQueryParam:
+      name: uid
+      in: query
+      required: true
+      schema:
+        $ref: "#/components/schemas/OfferUid"
+    OfferTextSearchQueryParam:
+      name: text_search
+      in: query
+      required: false
+      schema:
+        type: string
+  schemas:
+    NonEmptyString:
+      type: string
+      minLength: 1
+
+    OfferUid:
+      type: string
+      pattern: "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
+
+    OfferEmail:
+      type: string
+      pattern: "^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$"
+
+    Seller:
+      type: object
+      required:
+        - name
+        - surname
+        - email
+      properties:
+        name:
+          $ref: "#/components/schemas/NonEmptyString"
+        surname:
+          $ref: "#/components/schemas/NonEmptyString"
+        email:
+          $ref: "#/components/schemas/OfferEmail"
+
+    OfferStatus:
+      type: string
+      enum:
+        - active
+        - inactive
+        - sold_out
+
+    NonNegativeDecimal:
+      type: string
+      pattern: "^(0|[1-9][0-9]*)(\\.[0-9]{1,2})?$"
+
+    NonNegativeInteger:
+      type: integer
+      minimum: 0
+
+    GetOfferResponse200:
+      $ref: "#/components/schemas/Offer"
+
+    GetOfferResponse400:
+      type: object
+      required:
+        - error
+      properties:
+        error:
+          type: string
+
+    GetOfferResponse404:
+      type: object
+      required:
+        - error
+      properties:
+        error:
+          type: string
+
+    Offer:
+      type: object
+      required:
+        - uid
+        - seller
+        - title
+        - price
+        - quantity
+        - status
+      properties:
+        uid:
+          $ref: "#/components/schemas/OfferUid"
+        seller:
+          $ref: "#/components/schemas/Seller"
+        title:
+          type: string
+        description:
+          type: string
+        price:
+          $ref: "#/components/schemas/NonNegativeDecimal"
+        quantity:
+          $ref: "#/components/schemas/NonNegativeInteger"
+        status:
+          $ref: "#/components/schemas/OfferStatus"
+
+    ListOffersResponse200:
+      type: object
+      required:
+        - offers
+      properties:
+        offers:
+          type: array
+          items:
+            $ref: "#/components/schemas/Offer"
+
+    ListOffersResponse400:
+      type: object
+      required:
+        - error
+      properties:
+        error:
+          type: string

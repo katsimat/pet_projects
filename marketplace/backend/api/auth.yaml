@@ -1,0 +1,78 @@
+openapi: 3.0.0
+info:
+    title: Auth API
+    version: 1.0.0
+    description: Простая авторизация
+
+paths:
+    /auth/login:
+        post:
+            operationId: login
+            summary: Логин по email
+            requestBody:
+                required: true
+                content:
+                    application/json:
+                        schema:
+                            $ref: "#/components/schemas/LoginRequest"
+            responses:
+                "200":
+                    description: Токен выдан
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/LoginResponse200"
+                "401":
+                    description: Неверные учетные данные
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/LoginResponse401"
+                "400":
+                    description: Ошибка валидации
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/LoginResponse400"
+
+components:
+    schemas:
+        AuthEmail:
+            type: string
+            pattern: "^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$"
+
+        LoginRequest:
+            type: object
+            required:
+                - email
+                - password
+            properties:
+                email:
+                    $ref: "#/components/schemas/AuthEmail"
+                password:
+                    type: string
+                    minLength: 1
+
+        LoginResponse200:
+            type: object
+            required:
+                - token
+            properties:
+                token:
+                    type: string
+
+        LoginResponse400:
+            type: object
+            required:
+                - error
+            properties:
+                error:
+                    type: string
+
+        LoginResponse401:
+            type: object
+            required:
+                - error
+            properties:
+                error:
+                    type: string
